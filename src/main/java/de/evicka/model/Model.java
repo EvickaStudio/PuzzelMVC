@@ -2,6 +2,7 @@ package de.evicka.model;
 
 import javax.swing.*;
 import utils.Clean;
+import static utils.Chars.getCharAtPosition;
 
 /**
  * Model for the shuffle puzzle game.
@@ -40,15 +41,6 @@ public class Model {
         }
         // set the last button to be empty
         board[size - 1][size - 1].setText(" ");
-    }
-
-    /**
-     * Get the char of an Alphabet
-     * at a specific location
-     */
-    private String getCharAtPosition(int position) {
-        final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        return String.valueOf(alphabet.charAt(position));
     }
 
     /**
