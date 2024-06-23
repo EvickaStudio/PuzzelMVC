@@ -17,3 +17,15 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.jar {
+    manifest {
+val mainClassName = "de.evicka.Main"
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = mainClassName
+    }
+}
+    }
+}
