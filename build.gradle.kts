@@ -20,6 +20,12 @@ tasks.test {
 
 tasks.jar {
     manifest {
-        attributes["Main-Class"] = "de.evicka.Main"
+val mainClassName = "de.evicka.Main"
+
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = mainClassName
+    }
+}
     }
 }
