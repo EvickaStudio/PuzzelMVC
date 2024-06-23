@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="PuzzelMVC.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/PuzzelMVC_main_jar</output-path>
+    <root id="archive" name="PuzzelMVC.main.jar">
+      <element id="module-output" name="PuzzelMVC.main" />
+    </root>
+  </artifact>
+</component>
