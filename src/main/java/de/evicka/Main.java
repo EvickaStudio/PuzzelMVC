@@ -3,7 +3,7 @@ package de.evicka;
 import de.evicka.controller.Controller;
 import de.evicka.model.Model;
 import de.evicka.view.View;
-import utils.Utils;
+import de.evicka.utils.Utils;
 
 public class Main {
     public static void main(String[] args) {
