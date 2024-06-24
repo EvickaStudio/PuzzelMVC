@@ -34,15 +34,20 @@ public class View extends JFrame {
         JPanel gridPanel = new JPanel(new GridLayout(size, size, 4, 4));
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                buttons[row][col] = new JButton();
-                buttons[row][col].putClientProperty("row", row);
-                buttons[row][col].putClientProperty("col", col);
-                buttons[row][col].setForeground(Color.BLACK);
-                buttons[row][col].setFont(font);
+                buttons[row][col] = createButton(row, col);
                 gridPanel.add(buttons[row][col]);
             }
         }
         add(gridPanel, BorderLayout.CENTER);
+    }
+
+    private JButton createButton(int row, int col) {
+        JButton button = new JButton();
+        button.putClientProperty("row", row);
+        button.putClientProperty("col", col);
+        button.setForeground(Color.BLACK);
+        button.setFont(font);
+        return button;
     }
 
     public void addShiftListener(BiConsumer<Integer, Integer> listener) {
@@ -62,19 +67,22 @@ public class View extends JFrame {
     public void updateBoard(int[][] board) {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                int value = board[row][col];
-                if (value == -1) {
-                    buttons[row][col].setText("");
-                    buttons[row][col].setBackground(Color.WHITE);
-                } else {
-                    buttons[row][col].setText(Utils.charAtPosition(value));
-                    int expectedValue = row * size + col;
-                    if (value == expectedValue) {
-                        buttons[row][col].setBackground(Color.GREEN);
-                    } else {
-                        buttons[row][col].setBackground(Color.ORANGE);
-                    }
-                }
+                updateButton(buttons[row][col], board[row][col], row, col);
+            }
+        }
+    }
+
+    private void updateButton(JButton button, int value, int row, int col) {
+        if (value == -1) {
+            button.setText("");
+            button.setBackground(Color.WHITE);
+        } else {
+            button.setText(Utils.charAtPosition(value));
+            int expectedValue = row * size + col;
+            if (value == expectedValue) {
+                button.setBackground(Color.GREEN);
+            } else {
+                button.setBackground(Color.ORANGE);
             }
         }
     }
