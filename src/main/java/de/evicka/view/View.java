@@ -2,7 +2,7 @@ package de.evicka.view;
 
 import javax.swing.*;
 
-import utils.Utils;
+import de.evicka.utils.Utils;
 
 import java.awt.*;
 import java.awt.event.ActionListener;

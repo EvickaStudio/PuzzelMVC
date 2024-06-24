@@ -1,4 +1,4 @@
-package utils;
+package de.evicka.utils;
 
 import javax.swing.JOptionPane;
 import javax.swing.JSlider;

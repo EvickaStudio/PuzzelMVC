@@ -1,7 +1,7 @@
 package de.evicka.model;
 
 import javax.swing.*;
-import utils.Utils;
+import de.evicka.utils.Utils;
 
 /**
  * Model for the shuffle puzzle game.
