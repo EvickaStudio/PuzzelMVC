@@ -19,6 +19,7 @@ public class Controller {
         // Add listeners from the view
         this.view.addShiftListener(new ShiftListener());
         this.view.addShuffleListener(new ShuffleListener());
+        this.view.updateBoard(this.model.getBoard());
     }
 
     // ActionListener for shifting the buttons

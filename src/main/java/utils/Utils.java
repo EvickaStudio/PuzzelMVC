@@ -5,7 +5,7 @@ import javax.swing.JSlider;
 
 public class Utils {
     // get the char at the position
-    public static String getCharAtPosition(int position) {
+    public static String charAtPosition(int position) {
         final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         return String.valueOf(alphabet.charAt(position));
     }
@@ -18,7 +18,7 @@ public class Utils {
     }
 
         // slider to select the grid size for the shuffl game
-    public static int getGridSize() {
+    public static int gridSize() {
         JSlider slider = new JSlider(JSlider.HORIZONTAL, 2, 5, 2);
         slider.setMajorTickSpacing(1);
         slider.setPaintTicks(true);

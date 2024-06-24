@@ -6,9 +6,6 @@ import utils.Utils;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.Objects;
-
-import static utils.Utils.getCharAtPosition;
 
 
 public class View extends JFrame {
@@ -22,10 +19,6 @@ public class View extends JFrame {
         this.size = Utils.cleanSize(size); // clean the size
         this.buttons = new JButton[this.size][this.size]; // create the buttons
         setTitle("Puzzle Game"); // Set the window title here
-
-        // // Set the icon of the program in the resource folder
-        // ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/ICON-1.png")));
-        // setIconImage(icon.getImage());
 
         // set the layout to border layout
         setLayout(new BorderLayout());
@@ -97,7 +90,7 @@ public class View extends JFrame {
                 // if the text of the button is empty
                 if (board[row][col].getText().equals(" ")) {
                     buttons[row][col].setBackground(Color.WHITE); // Make the button white
-                } else if (board[row][col].getText().equals(getCharAtPosition(counter))) {
+                } else if (board[row][col].getText().equals(Utils.charAtPosition(counter))) {
                     // if the button is in the correct position
                     buttons[row][col].setBackground(Color.GREEN); // Make the button green
                 } else {

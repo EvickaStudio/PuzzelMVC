@@ -3,8 +3,6 @@ package de.evicka.model;
 import javax.swing.*;
 import utils.Utils;
 
-import static utils.Utils.getCharAtPosition;
-
 /**
  * Model for the shuffle puzzle game.
  *
@@ -37,7 +35,7 @@ public class Model {
             // create a new rows
             for (int col = 0; col < size; col++) {
                 // create a new button with the number
-                board[rows][col] = new JButton(String.valueOf(getCharAtPosition(i++)));
+                board[rows][col] = new JButton(String.valueOf(Utils.charAtPosition(i++)));
             }
         }
         // set the last button to be empty
@@ -57,7 +55,7 @@ public class Model {
                     return board[i][j].getText().equals(" ");
                 }
                 // if the button is not equal to the expected char at the given position
-                if (!board[i][j].getText().equals(getCharAtPosition(count++))) {
+                if (!board[i][j].getText().equals(Utils.charAtPosition(count++))) {
                     return false;
                 }
             }
@@ -155,13 +153,6 @@ public class Model {
      */
     public JButton[][] getBoard() {
         return this.board;
-    }
-
-    /**
-     * Get the size
-     */
-    public int getSize() {
-        return this.size;
     }
 
     /**

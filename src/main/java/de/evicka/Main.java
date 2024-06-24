@@ -8,7 +8,7 @@ import utils.Utils;
 public class Main {
     public static void main(String[] args) {
         // Get the grid size from the user
-        int size = Utils.getGridSize();
+        int size = Utils.gridSize();
         System.out.println(size);
 
         // Initiate the model & view with the given size
@@ -19,6 +19,6 @@ public class Main {
         new Controller(model, view);
 
         // Update the view with the initial board
-        view.updateBoard(model.getBoard());
+        // view.updateBoard(model.getBoard());
     }
 }
