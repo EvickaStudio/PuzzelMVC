@@ -1,7 +1,5 @@
 package de.evicka.model;
 
-import de.evicka.utils.Utils;
-
 /**
  * Model for the shuffle puzzle game.
  *
@@ -9,8 +7,8 @@ import de.evicka.utils.Utils;
  * shuffle the board
  */
 public class Model {
-    private int[][] board; // the board made of integers
-    private int size; // size of the board
+    final private int[][] board; // the board made of integers
+    final private int size; // size of the board
     private int moves = 0; // for a score
 
     public Model(int sz) {
