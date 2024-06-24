@@ -116,7 +116,7 @@ public class Model {
             return true;
         }
 
-        // if the button is not free, try again
+        // just in case
         return false;
     }
 
