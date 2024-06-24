@@ -19,18 +19,16 @@ public class View extends JFrame {
         this.size = Utils.cleanSize(size); // clean the size
         this.buttons = new JButton[this.size][this.size]; // create the buttons
         setTitle("Puzzle Game"); // Set the window title here
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 400);
 
         // set the layout to border layout
         setLayout(new BorderLayout());
         // initialize the buttons
+        // this creates a new grid layout
+        // in the center of the BorderLayout
         initializeButtons();
-        // set the preferred size to 400x400
-        setPreferredSize(new Dimension(400, 400));
-        // set the default close operation to exit on close
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        pack();
-        // set the frame to visible
-        setVisible(true);
+
 
         // create the reset button
         shuffleButton = new JButton("Shuffle");
@@ -39,20 +37,22 @@ public class View extends JFrame {
         // create the bottom panel
         JPanel bottomPanel = new JPanel();
         bottomPanel.setLayout(new BorderLayout());
-        bottomPanel.add(shuffleButton, BorderLayout.WEST);
-        bottomPanel.add(moveCounter, BorderLayout.EAST);
+        bottomPanel.add(shuffleButton, BorderLayout.WEST); // left
+        bottomPanel.add(moveCounter, BorderLayout.EAST); // right
+
         add(bottomPanel, BorderLayout.SOUTH); // add the bottom panel to the south of the frame
+        setVisible(true);
     }
 
     private void initializeButtons() {
         // Create a grid of buttons size x size
-        JPanel gridPanel = new JPanel(new GridLayout(size, size, 5, 5)); // GridLayout with gaps of 5 pixels
+        JPanel gridPanel = new JPanel(new GridLayout(size, size, 4, 4));
         // for each row and column
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
                 // create a new button
                 buttons[row][col] = new JButton();
-                // set the row and col
+                // set the row and col of the button
                 buttons[row][col].putClientProperty("row", row);
                 buttons[row][col].putClientProperty("col", col);
                 buttons[row][col].setForeground(Color.BLACK); // set the text color to black

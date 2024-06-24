@@ -19,7 +19,6 @@ public class Controller {
         // Add listeners from the view
         this.view.addShiftListener(new ShiftListener());
         this.view.addShuffleListener(new ShuffleListener());
-        this.view.updateBoard(this.model.getBoard());
     }
 
     // ActionListener for shifting the buttons
@@ -48,11 +47,8 @@ public class Controller {
     class ShuffleListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // reset the model
             model.reset();
-            // update the board with the new shuffled board
             view.updateBoard(model.getBoard());
-            // update the move counter
             view.updateMoveCounter(model.getMoves());
         }
     }

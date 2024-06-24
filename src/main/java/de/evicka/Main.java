@@ -18,7 +18,7 @@ public class Main {
         // Initiate the controller with the model & view
         new Controller(model, view);
 
-        // Update the view with the initial board
-        // view.updateBoard(model.getBoard());
+        // Update the view with the new board
+        view.updateBoard(model.getBoard());
     }
 }
