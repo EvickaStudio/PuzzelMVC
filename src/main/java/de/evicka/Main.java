@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
         // Get the grid size from the user
         int size = Utils.gridSize();
-        System.out.println(size);
 
         // Initiate the model & view with the given size
         Model model = new Model(size);
