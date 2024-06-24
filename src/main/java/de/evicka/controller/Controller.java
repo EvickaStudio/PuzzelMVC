@@ -47,11 +47,8 @@ public class Controller {
     class ShuffleListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // reset the model
             model.reset();
-            // update the board with the new shuffled board
             view.updateBoard(model.getBoard());
-            // update the move counter
             view.updateMoveCounter(model.getMoves());
         }
     }

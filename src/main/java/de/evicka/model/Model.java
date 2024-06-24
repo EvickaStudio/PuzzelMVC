@@ -1,8 +1,7 @@
 package de.evicka.model;
 
 import javax.swing.*;
-import utils.Clean;
-import static utils.Chars.getCharAtPosition;
+import utils.Utils;
 
 /**
  * Model for the shuffle puzzle game.
@@ -16,7 +15,7 @@ public class Model {
     private int moves = 0; // for a score
 
     public Model(int sz) {
-        this.size = Clean.cleanSize(sz); // sanitize the size just in case
+        this.size = Utils.cleanSize(sz); // sanitize the size just in case
         this.board = new JButton[size][size]; // create the board as an n x n matrix
         initBoard(); // initialize the board
         shuffle(); // shuffle the board
@@ -36,7 +35,7 @@ public class Model {
             // create a new rows
             for (int col = 0; col < size; col++) {
                 // create a new button with the number
-                board[rows][col] = new JButton(String.valueOf(getCharAtPosition(i++)));
+                board[rows][col] = new JButton(String.valueOf(Utils.charAtPosition(i++)));
             }
         }
         // set the last button to be empty
@@ -56,7 +55,7 @@ public class Model {
                     return board[i][j].getText().equals(" ");
                 }
                 // if the button is not equal to the expected char at the given position
-                if (!board[i][j].getText().equals(getCharAtPosition(count++))) {
+                if (!board[i][j].getText().equals(Utils.charAtPosition(count++))) {
                     return false;
                 }
             }
@@ -117,7 +116,7 @@ public class Model {
             return true;
         }
 
-        // if the button is not free, try again
+        // just in case
         return false;
     }
 
@@ -154,13 +153,6 @@ public class Model {
      */
     public JButton[][] getBoard() {
         return this.board;
-    }
-
-    /**
-     * Get the size
-     */
-    public int getSize() {
-        return this.size;
     }
 
     /**
