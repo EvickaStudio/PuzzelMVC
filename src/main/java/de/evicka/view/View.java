@@ -87,6 +87,7 @@ public class View extends JFrame {
 
                 // set the text of the button to the text of the board
                 buttons[row][col].setText(board[row][col].getText());
+                buttons[row][col].setBorder(BorderFactory.createEmptyBorder());
                 // if the text of the button is empty
                 if (board[row][col].getText().equals(" ")) {
                     buttons[row][col].setBackground(Color.WHITE); // Make the button white
