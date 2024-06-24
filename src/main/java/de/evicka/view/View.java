@@ -1,12 +1,15 @@
 package de.evicka.view;
 
 import javax.swing.*;
+
+import utils.Utils;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-import static utils.Chars.getCharAtPosition;
-import utils.Clean;
+import static utils.Utils.getCharAtPosition;
+
 
 public class View extends JFrame {
     private JButton[][] buttons; // the buttons of the board
@@ -16,13 +19,13 @@ public class View extends JFrame {
     private Font font = new Font("Segoe UI", Font.BOLD, 20); // the font of the buttons
 
     public View(int size) {
-        this.size = Clean.cleanSize(size); // clean the size
+        this.size = Utils.cleanSize(size); // clean the size
         this.buttons = new JButton[this.size][this.size]; // create the buttons
         setTitle("Puzzle Game"); // Set the window title here
 
-        // Set the icon of the program in the resource folder
-        ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/ICON-1.png")));
-        setIconImage(icon.getImage());
+        // // Set the icon of the program in the resource folder
+        // ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/ICON-1.png")));
+        // setIconImage(icon.getImage());
 
         // set the layout to border layout
         setLayout(new BorderLayout());

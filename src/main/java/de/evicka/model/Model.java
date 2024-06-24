@@ -1,8 +1,9 @@
 package de.evicka.model;
 
 import javax.swing.*;
-import utils.Clean;
-import static utils.Chars.getCharAtPosition;
+import utils.Utils;
+
+import static utils.Utils.getCharAtPosition;
 
 /**
  * Model for the shuffle puzzle game.
@@ -16,7 +17,7 @@ public class Model {
     private int moves = 0; // for a score
 
     public Model(int sz) {
-        this.size = Clean.cleanSize(sz); // sanitize the size just in case
+        this.size = Utils.cleanSize(sz); // sanitize the size just in case
         this.board = new JButton[size][size]; // create the board as an n x n matrix
         initBoard(); // initialize the board
         shuffle(); // shuffle the board

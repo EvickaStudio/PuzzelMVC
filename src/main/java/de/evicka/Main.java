@@ -3,12 +3,13 @@ package de.evicka;
 import de.evicka.controller.Controller;
 import de.evicka.model.Model;
 import de.evicka.view.View;
-import utils.Screen;
+import utils.Utils;
 
 public class Main {
     public static void main(String[] args) {
         // Get the grid size from the user
-        int size = Screen.getGridSize();
+        int size = Utils.getGridSize();
+        System.out.println(size);
 
         // Initiate the model & view with the given size
         Model model = new Model(size);
