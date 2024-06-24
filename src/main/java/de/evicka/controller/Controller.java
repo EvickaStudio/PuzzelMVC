@@ -2,11 +2,10 @@ package de.evicka.controller;
 
 import de.evicka.model.Model;
 import de.evicka.view.View;
+import javax.swing.JButton; // Added this import
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 
 public class Controller {
     private Model model;

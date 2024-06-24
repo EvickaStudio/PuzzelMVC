@@ -1,6 +1,5 @@
 package de.evicka.model;
 
-import javax.swing.*;
 import de.evicka.utils.Utils;
 
 /**
@@ -10,36 +9,30 @@ import de.evicka.utils.Utils;
  * shuffle the board
  */
 public class Model {
-    private JButton[][] board; // the board made of JButtons
+    private int[][] board; // the board made of integers
     private int size; // size of the board
     private int moves = 0; // for a score
 
     public Model(int sz) {
-        this.size = Utils.cleanSize(sz); // sanitize the size just in case
-        this.board = new JButton[size][size]; // create the board as an n x n matrix
+        this.size = sz;
+        this.board = new int[size][size];
         initBoard(); // initialize the board
         shuffle(); // shuffle the board
-        this.moves = 0; // the shuffle uses swaps
-                        // and so does the moves counter
-                        // so we need to reset it
+        this.moves = 0; // reset the moves counter
     }
 
     /**
      * Initialize the board
      */
     private void initBoard() {
-        // initialize the board with the numbers from 1 to size^2
         int i = 0;
-        // create a new board with the size of the board
-        for (int rows = 0; rows < size; rows++) {
-            // create a new rows
+        for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-                // create a new button with the number
-                board[rows][col] = new JButton(String.valueOf(Utils.charAtPosition(i++)));
+                board[row][col] = i;
+                i++;
             }
         }
-        // set the last button to be empty
-        board[size - 1][size - 1].setText(" ");
+        board[size - 1][size - 1] = -1; // Use -1 to represent the empty space
     }
 
     /**
@@ -52,12 +45,13 @@ public class Model {
             for (int j = 0; j < size; j++) {
                 // at the end check if the button is empty
                 if (i == size - 1 && j == size - 1) {
-                    return board[i][j].getText().equals(" ");
+                    return board[i][j] == -1;
                 }
                 // if the button is not equal to the expected char at the given position
-                if (!board[i][j].getText().equals(Utils.charAtPosition(count++))) {
+                if (board[i][j] != count) {
                     return false;
                 }
+                count++;
             }
         }
         return true;
@@ -125,11 +119,11 @@ public class Model {
      */
     private void swap(int row1, int col1, int row2, int col2) {
         // Get/ Set the text of the specific button
-        String temp = board[row1][col1].getText();
+        int temp = board[row1][col1];
         // swap the text of the two buttons
-        board[row1][col1].setText(board[row2][col2].getText());
+        board[row1][col1] = board[row2][col2];
         // set the text of the second button to the first button's text
-        board[row2][col2].setText(temp);
+        board[row2][col2] = temp;
         moves++; // increment the moves
     }
 
@@ -137,8 +131,8 @@ public class Model {
      * Check if the button is free
      */
     private boolean isFree(int rows, int col) {
-        // checks if the text of the button is equal to " "
-        return board[rows][col].getText().equals(" ");
+        // checks if the text of the button is equal to -1
+        return board[rows][col] == -1;
     }
 
     /**
@@ -151,7 +145,7 @@ public class Model {
     /**
      * Get the board
      */
-    public JButton[][] getBoard() {
+    public int[][] getBoard() {
         return this.board;
     }
 

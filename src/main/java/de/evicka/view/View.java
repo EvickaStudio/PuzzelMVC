@@ -1,12 +1,9 @@
 package de.evicka.view;
 
 import javax.swing.*;
-
-import de.evicka.utils.Utils;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
-
+import de.evicka.utils.Utils;
 
 public class View extends JFrame {
     private JButton[][] buttons; // the buttons of the board
@@ -15,8 +12,8 @@ public class View extends JFrame {
     private JLabel moveCounter; // the move counter
     private Font font = new Font("Segoe UI", Font.BOLD, 20); // the font of the buttons
 
-    public View(int size) {
-        this.size = Utils.cleanSize(size); // clean the size
+    public View(int zs) {
+        this.size = zs; // clean the size
         this.buttons = new JButton[this.size][this.size]; // create the buttons
         setTitle("Puzzle Game"); // Set the window title here
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,7 +25,6 @@ public class View extends JFrame {
         // this creates a new grid layout
         // in the center of the BorderLayout
         initializeButtons();
-
 
         // create the reset button
         shuffleButton = new JButton("Shuffle");
@@ -44,6 +40,10 @@ public class View extends JFrame {
         setVisible(true);
     }
 
+    public JButton[][] getButtons() {
+        return this.buttons;
+    }
+
     private void initializeButtons() {
         // Create a grid of buttons size x size
         JPanel gridPanel = new JPanel(new GridLayout(size, size, 4, 4));
@@ -57,7 +57,6 @@ public class View extends JFrame {
                 buttons[row][col].putClientProperty("col", col);
                 buttons[row][col].setForeground(Color.BLACK); // set the text color to black
                 buttons[row][col].setFont(font); // set the font
-                // buttons[row][col].setBackground(Color.BLUE); // Set initial color to red
                 gridPanel.add(buttons[row][col]); // add the button to the grid
             }
         }
@@ -79,26 +78,22 @@ public class View extends JFrame {
     }
 
     // update the board
-    public void updateBoard(JButton[][] board) {
-        int counter = 0;
-        // for each row and column
+    public void updateBoard(int[][] board) {
         for (int row = 0; row < size; row++) {
             for (int col = 0; col < size; col++) {
-
-                // set the text of the button to the text of the board
-                buttons[row][col].setText(board[row][col].getText());
-                buttons[row][col].setBorder(BorderFactory.createEmptyBorder());
-                // if the text of the button is empty
-                if (board[row][col].getText().equals(" ")) {
-                    buttons[row][col].setBackground(Color.WHITE); // Make the button white
-                } else if (board[row][col].getText().equals(Utils.charAtPosition(counter))) {
-                    // if the button is in the correct position
-                    buttons[row][col].setBackground(Color.GREEN); // Make the button green
+                int value = board[row][col];
+                if (value == -1) {
+                    buttons[row][col].setText("");
+                    buttons[row][col].setBackground(Color.WHITE);
                 } else {
-                    // if the position is incorrect
-                    buttons[row][col].setBackground(Color.ORANGE); // Make the button orange
+                    buttons[row][col].setText(Utils.charAtPosition(value));
+                    int expectedValue = row * size + col;
+                    if (value == expectedValue) {
+                        buttons[row][col].setBackground(Color.GREEN); // Correct position
+                    } else {
+                        buttons[row][col].setBackground(Color.ORANGE); // Otherwise, set to orange
+                    }
                 }
-                counter++;
             }
         }
     }
